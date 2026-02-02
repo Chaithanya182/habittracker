@@ -1,0 +1,82 @@
+.card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.content {
+    flex: 1;
+}
+
+.title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.streak {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+}
+
+.streakActive {
+    color: var(--warning);
+}
+
+.fireIcon {
+    transition: color 0.3s;
+}
+
+.fireIcon.active {
+    fill: var(--warning);
+    color: var(--warning);
+}
+
+.checkBtn {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    background: rgba(148, 163, 184, 0.1);
+    color: var(--text-secondary);
+}
+
+.checkBtn:hover {
+    background: rgba(148, 163, 184, 0.2);
+}
+
+.checkBtn.completed {
+    background: var(--success);
+    color: white;
+    box-shadow: 0 0 15px rgba(16, 185, 129, 0.5);
+    transform: scale(1.1);
+}
+
+.deleteBtn {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    opacity: 0;
+    transition: opacity 0.2s, color 0.2s;
+    background: transparent;
+    color: var(--text-secondary);
+    padding: 4px;
+}
+
+.card:hover .deleteBtn {
+    opacity: 1;
+}
+
+.deleteBtn:hover {
+    color: var(--danger);
+}

@@ -1,0 +1,16 @@
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+    padding: 1rem 0;
+}
+
+.emptyState {
+    text-align: center;
+    padding: 3rem;
+    color: var(--text-secondary);
+    font-size: 1.25rem;
+    background: var(--bg-card);
+    border-radius: var(--radius-lg);
+    border: 1px dashed rgba(255, 255, 255, 0.1);
+}

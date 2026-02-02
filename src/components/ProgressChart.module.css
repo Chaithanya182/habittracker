@@ -1,0 +1,14 @@
+.container {
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.title {
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+}
+
+.chartWrapper {
+    width: 100%;
+}

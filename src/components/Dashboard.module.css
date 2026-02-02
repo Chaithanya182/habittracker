@@ -1,0 +1,42 @@
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+    min-height: 100vh;
+}
+
+.sectionHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.fab {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--accent-primary);
+    color: white;
+    padding: 0.75rem 1.25rem;
+    border-radius: 9999px;
+    /* full pill */
+    font-weight: 600;
+    box-shadow: var(--shadow-glow);
+    transition: box-shadow 0.3s;
+}
+
+.fab:hover {
+    box-shadow: 0 0 30px var(--accent-glow);
+}
+
+@media (max-width: 600px) {
+    .fabText {
+        display: none;
+    }
+
+    .fab {
+        padding: 0.75rem;
+        border-radius: 50%;
+    }
+}

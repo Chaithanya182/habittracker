@@ -1,0 +1,131 @@
+.backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+    z-index: 40;
+}
+
+.modal {
+    position: fixed;
+    top: 15%;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: 90%;
+    max-width: 450px;
+    padding: 1.5rem;
+    z-index: 50;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.closeBtn {
+    background: transparent;
+    color: var(--text-secondary);
+    padding: 4px;
+    border-radius: 50%;
+    transition: background 0.2s;
+}
+
+.closeBtn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text-primary);
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.field label {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+}
+
+.input {
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 0.75rem 1rem;
+    border-radius: var(--radius-md);
+    color: var(--text-primary);
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.input:focus {
+    border-color: var(--accent-primary);
+}
+
+.colors {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+}
+
+.colorBtn {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    transition: transform 0.2s;
+}
+
+.colorBtn:hover {
+    transform: scale(1.1);
+}
+
+.selected {
+    border-color: white;
+    box-shadow: 0 0 0 2px var(--bg-card), 0 0 0 4px var(--accent-primary);
+}
+
+.actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin-top: 0.5rem;
+}
+
+.cancelBtn {
+    padding: 0.5rem 1rem;
+    background: transparent;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+.cancelBtn:hover {
+    color: var(--text-primary);
+}
+
+.submitBtn {
+    padding: 0.6rem 1.5rem;
+    background: var(--accent-primary);
+    color: white;
+    border-radius: var(--radius-md);
+    font-weight: 600;
+    box-shadow: 0 4px 10px rgba(139, 92, 246, 0.3);
+    transition: filter 0.2s, transform 0.1s;
+}
+
+.submitBtn:hover {
+    filter: brightness(1.1);
+}
+
+.submitBtn:active {
+    transform: translateY(1px);
+}
