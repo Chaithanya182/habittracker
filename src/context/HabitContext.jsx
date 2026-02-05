@@ -9,17 +9,9 @@ export const useHabits = () => {
     return context;
 };
 
-const defaultHabits = [
-    { id: '1', name: 'Wake up at 05:00', emoji: '⏰', goal: 30 },
-    { id: '2', name: 'Gym', emoji: '💪', goal: 30 },
-    { id: '3', name: 'Reading / Learning', emoji: '📚', goal: 30 },
-    { id: '4', name: 'Day Planning', emoji: '📝', goal: 30 },
-    { id: '5', name: 'Budget Tracking', emoji: '💰', goal: 30 }
-];
-
 const initialState = {
     currentMonth: format(new Date(), 'yyyy-MM'),
-    habits: defaultHabits,
+    habits: [],
     completions: {}, // { 'habitId': { '2025-02-01': true, '2025-02-02': false } }
     mentalState: {} // { '2025-02-01': { mood: 7, motivation: 8 } }
 };
@@ -215,6 +207,12 @@ export const HabitProvider = ({ children }) => {
         };
     }, [state.habits, isCompleted]);
 
+    // Reset all data
+    const resetAll = useCallback(() => {
+        setState(initialState);
+        localStorage.removeItem('habitTracker');
+    }, []);
+
     const value = {
         ...state,
         setMonth,
@@ -230,7 +228,8 @@ export const HabitProvider = ({ children }) => {
         getHabitStats,
         getMonthStats,
         getDayStats,
-        getYearlyStats
+        getYearlyStats,
+        resetAll
     };
 
     return (

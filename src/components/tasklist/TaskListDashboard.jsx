@@ -13,7 +13,8 @@ const TaskListDashboard = ({ onBack }) => {
         updateTask,
         toggleTaskComplete,
         deleteTask,
-        getStats
+        getStats,
+        resetAll
     } = useTaskList();
 
     const [showAddModal, setShowAddModal] = useState(false);
@@ -21,6 +22,12 @@ const TaskListDashboard = ({ onBack }) => {
     const [filterPriority, setFilterPriority] = useState('all');
     const [filterStatus, setFilterStatus] = useState('all');
     const [filterCategory, setFilterCategory] = useState('all');
+    const [showResetConfirm, setShowResetConfirm] = useState(false);
+
+    const handleReset = () => {
+        resetAll();
+        setShowResetConfirm(false);
+    };
 
     // New task form state
     const [newTask, setNewTask] = useState({
@@ -80,6 +87,31 @@ const TaskListDashboard = ({ onBack }) => {
             <button className={styles.backButton} onClick={onBack}>
                 ← Back to Home
             </button>
+
+            {/* Reset Button */}
+            <button
+                className={styles.resetButton}
+                onClick={() => setShowResetConfirm(true)}
+            >
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M3 6h18M8 6V4a2 2 0 012-2h4a2 2 0 012 2v2m3 0v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6h14M10 11v6M14 11v6" />
+                </svg>
+                Reset
+            </button>
+
+            {/* Reset Confirmation Modal */}
+            {showResetConfirm && (
+                <div className={styles.modalOverlay} onClick={() => setShowResetConfirm(false)}>
+                    <div className={styles.modal} onClick={e => e.stopPropagation()}>
+                        <h3 className={styles.resetTitle}>⚠️ Reset Task List?</h3>
+                        <p className={styles.resetText}>This will permanently delete all tasks and settings. This action cannot be undone.</p>
+                        <div className={styles.resetButtons}>
+                            <button onClick={() => setShowResetConfirm(false)}>Cancel</button>
+                            <button className={styles.dangerButton} onClick={handleReset}>Yes, Reset All</button>
+                        </div>
+                    </div>
+                </div>
+            )}
 
             {/* Stats Header */}
             <div className={styles.statsHeader}>

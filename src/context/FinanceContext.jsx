@@ -248,6 +248,12 @@ export const FinanceProvider = ({ children }) => {
         }));
     }, []);
 
+    // Reset all data
+    const resetAll = useCallback(() => {
+        setState(initialState);
+        localStorage.removeItem('financeTracker');
+    }, []);
+
     const value = {
         ...state,
         setMonth,
@@ -266,7 +272,8 @@ export const FinanceProvider = ({ children }) => {
         addExpenseCategory,
         deleteExpenseCategory,
         addDebtCategory,
-        deleteDebtCategory
+        deleteDebtCategory,
+        resetAll
     };
 
     return (

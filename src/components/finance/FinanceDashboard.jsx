@@ -28,13 +28,20 @@ const FinanceDashboard = ({ onBack }) => {
         addExpenseCategory,
         deleteExpenseCategory,
         addDebtCategory,
-        deleteDebtCategory
+        deleteDebtCategory,
+        resetAll
     } = useFinance();
 
     const [showSettings, setShowSettings] = useState(false);
     const [newIncomeCat, setNewIncomeCat] = useState('');
     const [newExpenseCat, setNewExpenseCat] = useState('');
     const [newDebtCat, setNewDebtCat] = useState('');
+    const [showResetConfirm, setShowResetConfirm] = useState(false);
+
+    const handleReset = () => {
+        resetAll();
+        setShowResetConfirm(false);
+    };
 
     const monthData = getMonthData();
     const stats = getStats();
@@ -90,6 +97,31 @@ const FinanceDashboard = ({ onBack }) => {
             <button className={styles.backButton} onClick={onBack}>
                 ← Back to Home
             </button>
+
+            {/* Reset Button */}
+            <button
+                className={styles.resetButton}
+                onClick={() => setShowResetConfirm(true)}
+            >
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M3 6h18M8 6V4a2 2 0 012-2h4a2 2 0 012 2v2m3 0v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6h14M10 11v6M14 11v6" />
+                </svg>
+                Reset
+            </button>
+
+            {/* Reset Confirmation Modal */}
+            {showResetConfirm && (
+                <div className={styles.modalOverlay} onClick={() => setShowResetConfirm(false)}>
+                    <div className={styles.resetModal} onClick={e => e.stopPropagation()}>
+                        <h3>⚠️ Reset Finance Tracker?</h3>
+                        <p>This will permanently delete all income, expenses, debts, and reset to defaults. This action cannot be undone.</p>
+                        <div className={styles.resetButtons}>
+                            <button onClick={() => setShowResetConfirm(false)}>Cancel</button>
+                            <button className={styles.dangerButton} onClick={handleReset}>Yes, Reset All</button>
+                        </div>
+                    </div>
+                </div>
+            )}
 
             {/* Header */}
             <div className={styles.header}>

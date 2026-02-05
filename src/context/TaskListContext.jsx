@@ -156,6 +156,12 @@ export const TaskListProvider = ({ children }) => {
         };
     }, [state.tasks]);
 
+    // Reset all data
+    const resetAll = useCallback(() => {
+        setState(initialState);
+        localStorage.removeItem('taskListTracker');
+    }, []);
+
     const value = {
         ...state,
         completeSetup,
@@ -165,7 +171,8 @@ export const TaskListProvider = ({ children }) => {
         deleteTask,
         addCategory,
         deleteCategory,
-        getStats
+        getStats,
+        resetAll
     };
 
     return (

@@ -187,6 +187,15 @@ export const TaskProvider = ({ children }) => {
         };
     }, [state.notes]);
 
+    // Reset all data
+    const resetAll = useCallback(() => {
+        setState({
+            ...initialState,
+            weekStartDate: getDefaultWeekStart()
+        });
+        localStorage.removeItem('weeklyTaskTracker');
+    }, []);
+
     const updateNote = useCallback((date, section, index, value) => {
         setState(prev => {
             const currentNotes = prev.notes[date] || {
@@ -224,7 +233,8 @@ export const TaskProvider = ({ children }) => {
         getTaskStats,
         getHabitProgress,
         getNotes,
-        updateNote
+        updateNote,
+        resetAll
     };
 
     return (
