@@ -44,7 +44,7 @@ const HomePage = () => {
         <div className={styles.homePage}>
             <div className={styles.header}>
                 <h1 className={styles.title}>
-                    Productivity <span>Hub</span>
+                    Track<span>log</span>
                 </h1>
                 <p className={styles.subtitle}>Choose a tracker to get started</p>
             </div>
