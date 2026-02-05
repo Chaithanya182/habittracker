@@ -1,0 +1,399 @@
+.habitDashboard {
+    min-height: 100vh;
+    background: var(--gray-100);
+    padding: var(--spacing-md);
+}
+
+.backButton {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    background: none;
+    border: none;
+    color: var(--green-primary);
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    padding: var(--spacing-sm);
+    margin-bottom: var(--spacing-md);
+}
+
+.backButton:hover {
+    text-decoration: underline;
+}
+
+/* Header */
+.header {
+    background: var(--white);
+    border: 1px solid var(--gray-200);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-md);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: var(--spacing-md);
+    flex-wrap: wrap;
+    gap: var(--spacing-md);
+}
+
+.monthNav {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+}
+
+.monthTitle {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--gray-800);
+    min-width: 180px;
+    text-align: center;
+}
+
+.navBtn {
+    background: var(--gray-100);
+    border: 1px solid var(--gray-300);
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.navBtn:hover {
+    background: var(--gray-200);
+}
+
+.statsRow {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xl);
+}
+
+.statItem {
+    text-align: center;
+}
+
+.statLabel {
+    font-size: 11px;
+    color: var(--gray-500);
+}
+
+.statValue {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--gray-800);
+}
+
+.progressBar {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.progressTrack {
+    width: 150px;
+    height: 20px;
+    background: var(--gray-200);
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+}
+
+.progressFill {
+    height: 100%;
+    background: var(--green-primary);
+    transition: width 0.3s;
+}
+
+/* Main Content */
+.mainContent {
+    display: grid;
+    grid-template-columns: 1fr 200px;
+    gap: var(--spacing-md);
+}
+
+@media (max-width: 1200px) {
+    .mainContent {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Calendar Grid */
+.calendarSection {
+    background: var(--white);
+    border: 1px solid var(--gray-200);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+}
+
+.calendarTable {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+}
+
+.calendarTable th,
+.calendarTable td {
+    border: 1px solid var(--gray-200);
+    padding: 4px;
+    text-align: center;
+    min-width: 28px;
+}
+
+.calendarTable th {
+    background: var(--gray-100);
+    font-weight: 600;
+    color: var(--gray-600);
+}
+
+.habitNameCell {
+    text-align: left !important;
+    padding-left: var(--spacing-sm) !important;
+    white-space: nowrap;
+    max-width: 180px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.habitEmoji {
+    margin-right: 4px;
+}
+
+.weekHeader {
+    background: var(--green-light) !important;
+    font-weight: 600 !important;
+    color: var(--green-dark) !important;
+}
+
+.dayHeader {
+    font-size: 10px;
+    color: var(--gray-500);
+}
+
+.dayNumber {
+    font-weight: 600;
+}
+
+.checkbox {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+    accent-color: var(--green-primary);
+}
+
+.deleteBtn {
+    background: none;
+    border: none;
+    color: var(--gray-300);
+    cursor: pointer;
+    font-size: 14px;
+    padding: 0 4px;
+}
+
+.deleteBtn:hover {
+    color: var(--danger);
+}
+
+/* Analysis Section */
+.analysisSection {
+    background: var(--white);
+    border: 1px solid var(--gray-200);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-md);
+}
+
+.analysisTitle {
+    font-size: 14px;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: var(--spacing-md);
+    color: var(--gray-800);
+}
+
+.analysisTable {
+    width: 100%;
+    font-size: 11px;
+}
+
+.analysisTable th {
+    text-align: left;
+    padding: 4px;
+    font-weight: 500;
+    color: var(--gray-600);
+}
+
+.analysisTable td {
+    padding: 4px;
+}
+
+.analysisBar {
+    height: 16px;
+    background: var(--green-primary);
+    border-radius: 2px;
+    min-width: 2px;
+}
+
+/* Progress & Mental State Section */
+.statsSection {
+    background: var(--white);
+    border: 1px solid var(--gray-200);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-md);
+    margin-top: var(--spacing-md);
+}
+
+.statsGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(50px, 1fr));
+    gap: var(--spacing-xs);
+    font-size: 10px;
+}
+
+.dayStatItem {
+    text-align: center;
+    padding: 4px;
+    border: 1px solid var(--gray-100);
+    border-radius: 4px;
+}
+
+.dayStatPercent {
+    font-weight: 600;
+    color: var(--green-primary);
+}
+
+/* Charts Section */
+.chartSection {
+    background: var(--white);
+    border: 1px solid var(--gray-200);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-md);
+    margin-top: var(--spacing-md);
+    height: 200px;
+}
+
+.chartTitle {
+    font-size: 12px;
+    color: var(--gray-600);
+    text-align: center;
+    margin-bottom: var(--spacing-sm);
+}
+
+/* Add Habit Form */
+.addHabitRow {
+    display: flex;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-sm);
+    background: var(--gray-50);
+    border-top: 1px solid var(--gray-200);
+}
+
+.addInput {
+    flex: 1;
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border: 1px solid var(--gray-300);
+    border-radius: var(--radius-sm);
+    font-size: 12px;
+}
+
+.addBtn {
+    padding: var(--spacing-xs) var(--spacing-md);
+    background: var(--green-primary);
+    color: var(--white);
+    border: none;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.addBtn:hover {
+    background: var(--green-dark);
+}
+
+/* Empty State */
+.emptyState {
+    text-align: center;
+    padding: var(--spacing-xl);
+    color: var(--gray-400);
+}
+
+/* Mental State Inputs */
+.mentalStateRow {
+    background: linear-gradient(135deg, #fff5f8 0%, #fff9e6 100%);
+}
+
+.mentalStateSelect {
+    width: 100%;
+    padding: 2px;
+    font-size: 10px;
+    border: 1px solid var(--gray-200);
+    border-radius: 3px;
+    background: white;
+    cursor: pointer;
+}
+
+.mentalStateSelect:hover {
+    border-color: #e91e63;
+}
+
+/* Yearly Statistics Section */
+.yearlySection {
+    background: var(--white);
+    border: 1px solid var(--gray-200);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-md);
+    margin-top: var(--spacing-md);
+}
+
+.yearlyTitle {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--gray-800);
+    text-align: center;
+    margin-bottom: var(--spacing-md);
+}
+
+.yearlyChart {
+    margin-bottom: var(--spacing-md);
+}
+
+/* Monthly Cards Grid */
+.monthlyCards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: var(--spacing-sm);
+}
+
+.monthCard {
+    background: var(--gray-50);
+    border: 1px solid var(--gray-200);
+    border-radius: var(--radius-sm);
+    padding: var(--spacing-sm);
+    text-align: center;
+}
+
+.monthCardTitle {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--green-primary);
+    margin-bottom: var(--spacing-xs);
+}
+
+.monthCardStats {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.monthStat {
+    display: flex;
+    justify-content: space-between;
+    font-size: 10px;
+}
+
+.monthStatLabel {
+    color: var(--gray-500);
+}
+
+.monthStatValue {
+    color: var(--gray-800);
+    font-weight: 500;
+}

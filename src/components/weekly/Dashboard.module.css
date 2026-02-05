@@ -1,0 +1,55 @@
+.dashboard {
+    min-height: 100vh;
+    background: var(--gray-100);
+    padding: var(--spacing-lg);
+}
+
+.topRow {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr 1.5fr;
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-lg);
+}
+
+.weekGrid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: var(--spacing-md);
+}
+
+/* Responsive adjustments */
+@media (max-width: 1400px) {
+    .topRow {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .topRow>*:first-child {
+        grid-column: 1 / -1;
+    }
+}
+
+@media (max-width: 1200px) {
+    .weekGrid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media (max-width: 900px) {
+    .topRow {
+        grid-template-columns: 1fr;
+    }
+
+    .weekGrid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .dashboard {
+        padding: var(--spacing-sm);
+    }
+
+    .weekGrid {
+        grid-template-columns: 1fr;
+    }
+}

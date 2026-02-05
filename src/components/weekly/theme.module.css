@@ -1,0 +1,10 @@
+/* Weekly Tracker Theme - Indigo & Coral */
+.weeklyTheme {
+    --primary: #6366f1;
+    --primary-light: #e0e7ff;
+    --primary-lighter: #eef2ff;
+    --primary-dark: #4f46e5;
+    --accent: #f97316;
+    --accent-light: #ffedd5;
+    --ring-color: #6366f1;
+}

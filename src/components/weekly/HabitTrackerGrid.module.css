@@ -1,0 +1,190 @@
+.habitTracker {
+    background: var(--white);
+    border: 1px solid var(--gray-200);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+}
+
+.header {
+    background: #14b8a6;
+    color: var(--white);
+    padding: var(--spacing-sm) var(--spacing-md);
+    font-size: 14px;
+    font-weight: 600;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.addButton {
+    background: var(--white);
+    color: #14b8a6;
+    border: none;
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: var(--radius-sm);
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.addButton:hover {
+    background: #f1f5f9;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+}
+
+.table th,
+.table td {
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-bottom: 1px solid var(--gray-200);
+    text-align: center;
+}
+
+.table th {
+    background: #f8fafc;
+    font-weight: 600;
+    color: #475569;
+    font-size: 11px;
+}
+
+.table th:first-child,
+.table td:first-child {
+    text-align: left;
+    padding-left: var(--spacing-md);
+    max-width: 150px;
+}
+
+.table th:last-child,
+.table td:last-child {
+    text-align: right;
+    padding-right: var(--spacing-md);
+}
+
+.habitName {
+    font-weight: 500;
+    color: #1e293b;
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+}
+
+.deleteHabit {
+    opacity: 0;
+    background: none;
+    border: none;
+    color: #64748b;
+    cursor: pointer;
+    font-size: 14px;
+    padding: 2px;
+    transition: opacity 0.2s;
+}
+
+.table tr:hover .deleteHabit {
+    opacity: 1;
+}
+
+.checkbox {
+    width: 14px;
+    height: 14px;
+    cursor: pointer;
+    accent-color: #14b8a6;
+}
+
+.progressCell {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    min-width: 100px;
+}
+
+.progressBar {
+    flex: 1;
+    height: 8px;
+    background: #e2e8f0;
+    border-radius: 4px;
+    overflow: hidden;
+    min-width: 40px;
+}
+
+.progressFill {
+    height: 100%;
+    background: #14b8a6;
+    border-radius: 4px;
+    transition: width 0.3s ease;
+}
+
+.progressText {
+    font-weight: 600;
+    color: #14b8a6;
+    min-width: 35px;
+    text-align: right;
+    display: flex;
+    align-items: center;
+    gap: 2px;
+}
+
+.trophy {
+    font-size: 14px;
+    animation: bounce 0.5s ease-in-out;
+}
+
+@keyframes bounce {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-3px);
+    }
+}
+
+.emptyState {
+    padding: var(--spacing-xl);
+    text-align: center;
+    color: #94a3b8;
+    font-size: 13px;
+}
+
+/* Add Habit Form */
+.addForm {
+    display: flex;
+    padding: var(--spacing-sm);
+    gap: var(--spacing-sm);
+    border-top: 1px solid var(--gray-200);
+    background: #f8fafc;
+}
+
+.habitInput {
+    flex: 1;
+    padding: var(--spacing-sm);
+    border: 1px solid #cbd5e1;
+    border-radius: var(--radius-sm);
+    font-size: 13px;
+}
+
+.habitInput:focus {
+    outline: none;
+    border-color: #14b8a6;
+}
+
+.submitButton {
+    padding: var(--spacing-sm) var(--spacing-md);
+    background: #14b8a6;
+    color: var(--white);
+    border: none;
+    border-radius: var(--radius-sm);
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.submitButton:hover {
+    background: #0d9488;
+}

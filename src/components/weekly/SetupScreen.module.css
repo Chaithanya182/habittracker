@@ -1,0 +1,132 @@
+.setupContainer {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #f0fdfa 0%, var(--white) 100%);
+    padding: var(--spacing-xl);
+}
+
+.setupCard {
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    padding: var(--spacing-xl) 48px;
+    max-width: 500px;
+    width: 100%;
+    text-align: center;
+}
+
+.title {
+    font-size: 24px;
+    font-weight: 700;
+    color: #1e293b;
+    margin-bottom: var(--spacing-sm);
+    line-height: 1.3;
+}
+
+.subtitle {
+    font-size: 16px;
+    color: #64748b;
+    margin-bottom: var(--spacing-xl);
+}
+
+.formGroup {
+    margin-bottom: var(--spacing-xl);
+    text-align: left;
+}
+
+.label {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    color: #1e293b;
+    margin-bottom: var(--spacing-sm);
+}
+
+.quoteInput {
+    width: 100%;
+    padding: var(--spacing-md);
+    border: 2px solid var(--gray-200);
+    border-radius: var(--radius-md);
+    font-size: 16px;
+    font-style: italic;
+    resize: vertical;
+    min-height: 80px;
+    transition: border-color 0.2s;
+}
+
+.quoteInput:focus {
+    outline: none;
+    border-color: #14b8a6;
+}
+
+.datePickerWrapper {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+}
+
+.dateLabel {
+    background: #14b8a6;
+    color: var(--white);
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: var(--radius-sm);
+    font-size: 14px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.dateInput {
+    flex: 1;
+    padding: var(--spacing-sm) var(--spacing-md);
+    border: 2px solid #14b8a6;
+    border-radius: var(--radius-sm);
+    font-size: 14px;
+    color: #1e293b;
+}
+
+.startButton {
+    width: 100%;
+    padding: var(--spacing-md) var(--spacing-xl);
+    background: #14b8a6;
+    color: var(--white);
+    border: none;
+    border-radius: var(--radius-md);
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.1s;
+}
+
+.startButton:hover {
+    background: #0d9488;
+}
+
+.startButton:active {
+    transform: scale(0.98);
+}
+
+.preview {
+    margin-top: var(--spacing-xl);
+    padding: var(--spacing-lg);
+    background: #f8fafc;
+    border-radius: var(--radius-md);
+    border-left: 4px solid #14b8a6;
+}
+
+.previewLabel {
+    font-size: 12px;
+    font-weight: 600;
+    color: #94a3b8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: var(--spacing-sm);
+}
+
+.previewQuote {
+    font-size: 18px;
+    font-style: italic;
+    color: #1e293b;
+}

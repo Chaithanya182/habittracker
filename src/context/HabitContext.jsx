@@ -1,5 +1,5 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
-import { format } from 'date-fns';
+import React, { createContext, useContext, useState, useEffect, useCallback } from 'react';
+import { format, getDaysInMonth, startOfMonth, getDay, addMonths, subMonths } from 'date-fns';
 
 const HabitContext = createContext();
 
@@ -9,63 +9,232 @@ export const useHabits = () => {
     return context;
 };
 
+const defaultHabits = [
+    { id: '1', name: 'Wake up at 05:00', emoji: '⏰', goal: 30 },
+    { id: '2', name: 'Gym', emoji: '💪', goal: 30 },
+    { id: '3', name: 'Reading / Learning', emoji: '📚', goal: 30 },
+    { id: '4', name: 'Day Planning', emoji: '📝', goal: 30 },
+    { id: '5', name: 'Budget Tracking', emoji: '💰', goal: 30 }
+];
+
+const initialState = {
+    currentMonth: format(new Date(), 'yyyy-MM'),
+    habits: defaultHabits,
+    completions: {}, // { 'habitId': { '2025-02-01': true, '2025-02-02': false } }
+    mentalState: {} // { '2025-02-01': { mood: 7, motivation: 8 } }
+};
+
 export const HabitProvider = ({ children }) => {
-    const [habits, setHabits] = useState(() => {
-        const saved = localStorage.getItem('habits');
-        return saved ? JSON.parse(saved) : [];
+    const [state, setState] = useState(() => {
+        const saved = localStorage.getItem('habitTracker');
+        if (saved) {
+            const parsed = JSON.parse(saved);
+            return { ...initialState, ...parsed };
+        }
+        return initialState;
     });
 
     useEffect(() => {
-        localStorage.setItem('habits', JSON.stringify(habits));
-    }, [habits]);
+        localStorage.setItem('habitTracker', JSON.stringify(state));
+    }, [state]);
 
-    const addHabit = (habit) => {
-        setHabits([...habits, {
-            id: crypto.randomUUID(),
-            createdAt: new Date().toISOString(),
-            streak: 0,
-            completedDates: [],
-            ...habit
-        }]);
-    };
+    // Navigation
+    const setMonth = useCallback((month) => {
+        setState(prev => ({ ...prev, currentMonth: month }));
+    }, []);
 
-    const toggleHabit = (id) => {
-        const today = format(new Date(), 'yyyy-MM-dd');
-        setHabits(habits.map(habit => {
-            if (habit.id === id) {
-                const isCompletedToday = habit.completedDates.includes(today);
-                let newCompletedDates;
-                let newStreak = habit.streak;
+    const nextMonth = useCallback(() => {
+        const current = new Date(state.currentMonth + '-01');
+        setState(prev => ({ ...prev, currentMonth: format(addMonths(current, 1), 'yyyy-MM') }));
+    }, [state.currentMonth]);
 
-                if (isCompletedToday) {
-                    newCompletedDates = habit.completedDates.filter(d => d !== today);
-                    // Simple streak logic: if unchecking today, streak might decrease depending on logic. 
-                    // For simplicity, we'll just recalculate or decrement if it was incremented today.
-                    // A proper streak calc would look at consecutive days.
-                    // For this MVP, let's keep it simple: just remove the date.
-                    // A robust streak recalc is complex, let's just decrement validly.
-                    newStreak = Math.max(0, newStreak - 1);
-                } else {
-                    newCompletedDates = [...habit.completedDates, today];
-                    newStreak += 1; // Basic increment. Real streak logic needs to check yesterday.
-                }
+    const prevMonth = useCallback(() => {
+        const current = new Date(state.currentMonth + '-01');
+        setState(prev => ({ ...prev, currentMonth: format(subMonths(current, 1), 'yyyy-MM') }));
+    }, [state.currentMonth]);
 
-                return {
-                    ...habit,
-                    completedDates: newCompletedDates,
-                    streak: newStreak
-                };
-            }
-            return habit;
+    // Habit CRUD
+    const addHabit = useCallback((name, emoji, goal = 30) => {
+        setState(prev => ({
+            ...prev,
+            habits: [...prev.habits, {
+                id: crypto.randomUUID(),
+                name,
+                emoji,
+                goal
+            }]
         }));
-    };
+    }, []);
 
-    const deleteHabit = (id) => {
-        setHabits(habits.filter(h => h.id !== id));
+    const deleteHabit = useCallback((habitId) => {
+        setState(prev => ({
+            ...prev,
+            habits: prev.habits.filter(h => h.id !== habitId),
+            completions: Object.fromEntries(
+                Object.entries(prev.completions).filter(([key]) => key !== habitId)
+            )
+        }));
+    }, []);
+
+    // Toggle completion
+    const toggleCompletion = useCallback((habitId, date) => {
+        setState(prev => {
+            const habitCompletions = prev.completions[habitId] || {};
+            return {
+                ...prev,
+                completions: {
+                    ...prev.completions,
+                    [habitId]: {
+                        ...habitCompletions,
+                        [date]: !habitCompletions[date]
+                    }
+                }
+            };
+        });
+    }, []);
+
+    // Mental State
+    const setMentalState = useCallback((date, type, value) => {
+        setState(prev => ({
+            ...prev,
+            mentalState: {
+                ...prev.mentalState,
+                [date]: {
+                    ...(prev.mentalState[date] || {}),
+                    [type]: value
+                }
+            }
+        }));
+    }, []);
+
+    const getMentalState = useCallback((date) => {
+        return state.mentalState[date] || { mood: null, motivation: null };
+    }, [state.mentalState]);
+
+    // Yearly Statistics
+    const getYearlyStats = useCallback(() => {
+        const months = [];
+        const today = new Date();
+
+        // Get last 12 months
+        for (let i = 11; i >= 0; i--) {
+            const monthDate = new Date(today.getFullYear(), today.getMonth() - i, 1);
+            const monthKey = format(monthDate, 'yyyy-MM');
+            const monthName = format(monthDate, 'MMMM');
+            const daysInMonth = getDaysInMonth(monthDate);
+
+            // Calculate stats for this month
+            let completed = 0;
+            const totalPossible = state.habits.length * daysInMonth;
+
+            for (let day = 1; day <= daysInMonth; day++) {
+                const dateKey = `${monthKey}-${String(day).padStart(2, '0')}`;
+                state.habits.forEach(habit => {
+                    if (state.completions[habit.id]?.[dateKey]) {
+                        completed++;
+                    }
+                });
+            }
+
+            months.push({
+                month: monthName,
+                monthKey,
+                numberOfHabits: state.habits.length,
+                completed,
+                totalPossible,
+                percentage: totalPossible > 0 ? Math.round((completed / totalPossible) * 100) : 0
+            });
+        }
+
+        return months;
+    }, [state.habits, state.completions]);
+
+    // Get days in current month
+    const getMonthDays = useCallback(() => {
+        const monthDate = new Date(state.currentMonth + '-01');
+        const daysInMonth = getDaysInMonth(monthDate);
+        const firstDayOfWeek = getDay(startOfMonth(monthDate));
+
+        const days = [];
+        for (let i = 1; i <= daysInMonth; i++) {
+            days.push({
+                day: i,
+                date: `${state.currentMonth}-${String(i).padStart(2, '0')}`,
+                dayOfWeek: (firstDayOfWeek + i - 1) % 7
+            });
+        }
+        return days;
+    }, [state.currentMonth]);
+
+    // Get habit completion for a specific day
+    const isCompleted = useCallback((habitId, date) => {
+        return state.completions[habitId]?.[date] || false;
+    }, [state.completions]);
+
+    // Statistics
+    const getHabitStats = useCallback((habitId) => {
+        const habit = state.habits.find(h => h.id === habitId);
+        if (!habit) return { actual: 0, goal: 30, percentage: 0 };
+
+        const monthDays = getMonthDays();
+        const completions = monthDays.filter(d => isCompleted(habitId, d.date)).length;
+
+        return {
+            actual: completions,
+            goal: habit.goal,
+            percentage: Math.round((completions / habit.goal) * 100)
+        };
+    }, [state.habits, getMonthDays, isCompleted]);
+
+    const getMonthStats = useCallback(() => {
+        const monthDays = getMonthDays();
+        const totalPossible = state.habits.length * monthDays.length;
+        let completed = 0;
+
+        state.habits.forEach(habit => {
+            monthDays.forEach(day => {
+                if (isCompleted(habit.id, day.date)) completed++;
+            });
+        });
+
+        return {
+            numberOfHabits: state.habits.length,
+            completedHabits: completed,
+            percentage: totalPossible > 0 ? Math.round((completed / totalPossible) * 100) : 0
+        };
+    }, [state.habits, getMonthDays, isCompleted]);
+
+    const getDayStats = useCallback((date) => {
+        const total = state.habits.length;
+        const done = state.habits.filter(h => isCompleted(h.id, date)).length;
+        return {
+            total,
+            done,
+            notDone: total - done,
+            percentage: total > 0 ? Math.round((done / total) * 100) : 0
+        };
+    }, [state.habits, isCompleted]);
+
+    const value = {
+        ...state,
+        setMonth,
+        nextMonth,
+        prevMonth,
+        addHabit,
+        deleteHabit,
+        toggleCompletion,
+        setMentalState,
+        getMentalState,
+        getMonthDays,
+        isCompleted,
+        getHabitStats,
+        getMonthStats,
+        getDayStats,
+        getYearlyStats
     };
 
     return (
-        <HabitContext.Provider value={{ habits, addHabit, toggleHabit, deleteHabit }}>
+        <HabitContext.Provider value={value}>
             {children}
         </HabitContext.Provider>
     );

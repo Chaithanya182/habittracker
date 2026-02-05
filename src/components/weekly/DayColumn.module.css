@@ -1,0 +1,152 @@
+.dayColumn {
+    background: var(--white);
+    border: 1px solid var(--gray-200);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.header {
+    background: #14b8a6;
+    color: var(--white);
+    padding: var(--spacing-sm) var(--spacing-md);
+    text-align: center;
+}
+
+.dayName {
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: capitalize;
+}
+
+.date {
+    font-size: 11px;
+    opacity: 0.9;
+}
+
+.progressSection {
+    padding: var(--spacing-md);
+    display: flex;
+    justify-content: center;
+    border-bottom: 1px solid var(--gray-200);
+}
+
+.tasksSection {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 150px;
+}
+
+.tasksHeader {
+    background: #ccfbf1;
+    color: #0d9488;
+    padding: var(--spacing-xs) var(--spacing-md);
+    font-size: 12px;
+    font-weight: 600;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.addTaskButton {
+    background: #0d9488;
+    color: var(--white);
+    border: none;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    font-size: 14px;
+    line-height: 1;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.addTaskButton:hover {
+    background: #14b8a6;
+}
+
+.tasksList {
+    flex: 1;
+    padding: var(--spacing-sm) var(--spacing-md);
+    overflow-y: auto;
+    max-height: 200px;
+}
+
+.emptyTasks {
+    color: var(--gray-400);
+    font-size: 11px;
+    text-align: center;
+    padding: var(--spacing-md);
+}
+
+.addTaskForm {
+    display: flex;
+    gap: var(--spacing-xs);
+    padding: var(--spacing-sm);
+    border-top: 1px solid var(--gray-100);
+    background: var(--gray-50);
+}
+
+.taskInput {
+    flex: 1;
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border: 1px solid var(--gray-300);
+    border-radius: var(--radius-sm);
+    font-size: 12px;
+    min-width: 0;
+}
+
+.taskInput:focus {
+    outline: none;
+    border-color: #14b8a6;
+}
+
+.submitTask {
+    padding: var(--spacing-xs) var(--spacing-sm);
+    background: #14b8a6;
+    color: var(--white);
+    border: none;
+    border-radius: var(--radius-sm);
+    font-size: 11px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.submitTask:hover {
+    background: #0d9488;
+}
+
+.footer {
+    border-top: 1px solid var(--gray-200);
+    padding: var(--spacing-sm) var(--spacing-md);
+    font-size: 11px;
+}
+
+.statRow {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2px;
+}
+
+.statRow:last-child {
+    margin-bottom: 0;
+}
+
+.statLabel {
+    color: #475569;
+}
+
+.statCompleted {
+    color: #14b8a6;
+    font-weight: 600;
+}
+
+.statNotCompleted {
+    color: #64748b;
+    font-weight: 600;
+}

@@ -1,0 +1,101 @@
+.quoteSection {
+    background: var(--white);
+    border: 1px solid var(--gray-200);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-lg);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.quoteText {
+    font-size: 20px;
+    font-weight: 600;
+    font-style: italic;
+    color: #1e293b;
+    line-height: 1.4;
+    text-align: center;
+    padding: var(--spacing-lg);
+    min-height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dateRow {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+}
+
+.dateLabel {
+    background: #14b8a6;
+    color: var(--white);
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: var(--radius-sm);
+    font-size: 14px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.dateInput {
+    padding: var(--spacing-sm) var(--spacing-md);
+    border: 2px solid #14b8a6;
+    border-radius: var(--radius-sm);
+    font-size: 14px;
+    color: #1e293b;
+    background: var(--white);
+}
+
+.dateInput:focus {
+    outline: none;
+    border-color: #0d9488;
+}
+
+.editButton {
+    margin-left: auto;
+    padding: var(--spacing-xs) var(--spacing-sm);
+    background: transparent;
+    border: 1px solid #cbd5e1;
+    border-radius: var(--radius-sm);
+    color: #64748b;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.editButton:hover {
+    background: #f1f5f9;
+    border-color: #94a3b8;
+}
+
+.quoteInput {
+    width: 100%;
+    padding: var(--spacing-md);
+    border: 2px solid #14b8a6;
+    border-radius: var(--radius-md);
+    font-size: 18px;
+    font-style: italic;
+    text-align: center;
+    resize: none;
+}
+
+.quoteInput:focus {
+    outline: none;
+}
+
+.saveButton {
+    padding: var(--spacing-sm) var(--spacing-md);
+    background: #14b8a6;
+    color: var(--white);
+    border: none;
+    border-radius: var(--radius-sm);
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    align-self: center;
+}
+
+.saveButton:hover {
+    background: #0d9488;
+}

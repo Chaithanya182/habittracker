@@ -1,0 +1,46 @@
+.overallProgress {
+    background: var(--white);
+    border: 1px solid var(--gray-200);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+}
+
+.header {
+    background: #14b8a6;
+    color: var(--white);
+    padding: var(--spacing-sm) var(--spacing-md);
+    font-size: 14px;
+    font-weight: 600;
+    text-align: center;
+}
+
+.content {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: var(--spacing-lg);
+    gap: var(--spacing-lg);
+}
+
+.chartContainer {
+    flex: 1;
+    max-width: 200px;
+    height: 120px;
+}
+
+.progressContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.completedText {
+    font-size: 14px;
+    color: #64748b;
+}
+
+.completedCount {
+    font-weight: 600;
+    color: #1e293b;
+}

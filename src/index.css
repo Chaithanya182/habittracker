@@ -1,27 +1,64 @@
+/* Productivity Hub - Teal + Slate Theme */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
 :root {
-  /* Premium Dark Theme Palette */
-  --bg-primary: #0f172a; /* Slate 900 */
-  --bg-secondary: #1e293b; /* Slate 800 */
-  --bg-card: rgba(30, 41, 59, 0.7); /* Glassy Slate 800 */
-  
-  --text-primary: #f8fafc; /* Slate 50 */
-  --text-secondary: #94a3b8; /* Slate 400 */
-  
-  --accent-primary: #8b5cf6; /* Violet 500 */
-  --accent-glow: rgba(139, 92, 246, 0.5);
-  
-  --success: #10b981; /* Emerald 500 */
-  --warning: #f59e0b; /* Amber 500 */
-  --danger: #ef4444; /* Red 500 */
+  /* Teal Color Palette */
+  --green-primary: #14b8a6;
+  --green-dark: #0d9488;
+  --green-light: #ccfbf1;
+  --green-lighter: #f0fdfa;
+  --green-ring: #14b8a6;
 
+  /* Slate Color Palette */
+  --slate-900: #0f172a;
+  --slate-800: #1e293b;
+  --slate-700: #334155;
+  --slate-600: #475569;
+  --slate-500: #64748b;
+  --slate-400: #94a3b8;
+  --slate-300: #cbd5e1;
+  --slate-200: #e2e8f0;
+  --slate-100: #f1f5f9;
+  --slate-50: #f8fafc;
+
+  /* Neutral Colors */
+  --white: #ffffff;
+  --gray-50: #f8fafc;
+  --gray-100: #f1f5f9;
+  --gray-200: #e2e8f0;
+  --gray-300: #cbd5e1;
+  --gray-400: #94a3b8;
+  --gray-500: #64748b;
+  --gray-600: #475569;
+  --gray-700: #334155;
+  --gray-800: #1e293b;
+  --black: #0f172a;
+
+  /* Semantic Colors */
+  --success: #14b8a6;
+  --warning: #f59e0b;
+  --danger: #ef4444;
+  --error: #ef4444;
+
+  /* Typography */
   --font-main: 'Inter', system-ui, -apple-system, sans-serif;
-  
-  --radius-lg: 16px;
-  --radius-md: 12px;
-  --radius-sm: 8px;
 
-  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 4px 6px -2px rgba(0, 0, 0, 0.3);
-  --shadow-glow: 0 0 20px var(--accent-glow);
+  /* Spacing */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 12px;
+  --spacing-lg: 16px;
+  --spacing-xl: 24px;
+
+  /* Border Radius */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 20px rgba(0, 0, 0, 0.12);
 }
 
 * {
@@ -32,48 +69,82 @@
 
 body {
   font-family: var(--font-main);
-  background-color: var(--bg-primary);
-  color: var(--text-primary);
+  background-color: var(--slate-100);
+  color: var(--slate-800);
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
   min-height: 100vh;
 }
 
-/* Glassmorphism Utility */
-.glass-panel {
-  background: var(--bg-card);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-lg);
-}
-
-/* Scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
-}
-::-webkit-scrollbar-track {
-  background: transparent;
-}
-::-webkit-scrollbar-thumb {
-  background: var(--bg-secondary);
-  border-radius: 4px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: var(--accent-primary);
+#root {
+  min-height: 100vh;
 }
 
 /* Typography */
-h1, h2, h3, h4 {
-  font-weight: 700;
-  letter-spacing: -0.025em;
-  color: var(--text-primary);
+h1,
+h2,
+h3,
+h4 {
+  font-weight: 600;
+  color: var(--slate-800);
 }
 
 button {
   cursor: pointer;
   border: none;
   font-family: inherit;
+}
+
+input,
+textarea {
+  font-family: inherit;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--slate-100);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--slate-300);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--slate-400);
+}
+
+/* Utility Classes */
+.container {
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: var(--spacing-lg);
+}
+
+/* Checkbox Styling */
+input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  accent-color: #14b8a6;
+  cursor: pointer;
+}
+
+/* Date Picker Styling */
+input[type="date"] {
+  padding: var(--spacing-sm) var(--spacing-md);
+  border: 2px solid #14b8a6;
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  color: var(--slate-800);
+  background: var(--white);
+}
+
+input[type="date"]:focus {
+  outline: none;
+  border-color: #0d9488;
 }

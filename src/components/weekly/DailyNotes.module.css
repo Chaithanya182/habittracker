@@ -1,0 +1,62 @@
+.dailyNotes {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin-top: var(--spacing-md);
+}
+
+.section {
+    border: 1px solid var(--gray-200);
+    border-bottom: none;
+}
+
+.section:last-child {
+    border-bottom: 1px solid var(--gray-200);
+}
+
+.sectionHeader {
+    background: #ccfbf1;
+    color: #0d9488;
+    padding: var(--spacing-xs) var(--spacing-md);
+    font-size: 11px;
+    font-weight: 600;
+    text-align: center;
+}
+
+.notesList {
+    background: var(--white);
+}
+
+.noteRow {
+    display: flex;
+    align-items: flex-start;
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-bottom: 1px solid #f1f5f9;
+    gap: var(--spacing-xs);
+}
+
+.noteRow:last-child {
+    border-bottom: none;
+}
+
+.noteNumber {
+    font-size: 11px;
+    color: #14b8a6;
+    min-width: 16px;
+    font-weight: 600;
+}
+
+.noteInput {
+    flex: 1;
+    border: none;
+    outline: none;
+    font-size: 11px;
+    background: transparent;
+    color: #1e293b;
+    padding: 0;
+    min-width: 0;
+}
+
+.noteInput::placeholder {
+    color: #94a3b8;
+}
