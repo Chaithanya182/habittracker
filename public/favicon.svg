@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <!-- Clipboard body -->
+  <rect x="4" y="4" width="24" height="26" rx="2" fill="none" stroke="#1a1a1a" stroke-width="2"/>
+  <!-- Clipboard top clip -->
+  <rect x="10" y="2" width="12" height="5" rx="1" fill="none" stroke="#1a1a1a" stroke-width="2"/>
+  <!-- Line 1 -->
+  <line x1="8" y1="12" x2="14" y2="12" stroke="#1a1a1a" stroke-width="2" stroke-linecap="round"/>
+  <!-- Check 1 -->
+  <path d="M17 11 L19 13 L23 9" stroke="#1a1a1a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <!-- Line 2 -->
+  <line x1="8" y1="19" x2="14" y2="19" stroke="#1a1a1a" stroke-width="2" stroke-linecap="round"/>
+  <!-- Check 2 -->
+  <path d="M17 18 L19 20 L23 16" stroke="#1a1a1a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <!-- Line 3 -->
+  <line x1="8" y1="26" x2="14" y2="26" stroke="#1a1a1a" stroke-width="2" stroke-linecap="round"/>
+  <!-- Check 3 -->
+  <path d="M17 25 L19 27 L23 23" stroke="#1a1a1a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+</svg>
